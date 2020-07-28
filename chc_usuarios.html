@@ -1,0 +1,277 @@
+<!DOCTYPE HTML>
+<html lang="es">
+<head>
+ <title>registro usuario…</title>
+ <meta charset="UTF-8">
+ <meta name="description" content="Descripción de la página…">
+ <script src="validation.js"></script>
+
+
+</head>
+<body>
+    <h1>formulario de registro</h1>
+    <form action="" name="formulario" method="get" id="formul">
+        <input  type="number" name="idUsr" id="idUsr" placeholder="digite id del usuario" ><br>
+        <br><input type="number" name="idPais" id="idPais" placeholder="digite id del pais" ><br>
+        <br><input type="text" name="nombre" id="nombre" onchange="validarusuario()" placeholder="digite su nombre" ><br>
+        <br><input type="text" name="apellido" id="apellido" placeholder="digite su apellido" ><br>
+        <br><select type = "text" name="select" id="selectDir"> 
+            <option value="cll">cll</option>
+            <option value="cra">cra</option>
+            <option value="av">av</option>
+            <option value="anv">anv</option>
+            <option value="trans">trans</option>
+        </select>
+        <input type="text" name="direccion" id="direccion" placeholder="complete direccion" ><br>
+        <br><input  type="text" name="ccusuario" id="ccusuario" placeholder="digite su ccusuario" ><br>
+        <br><input  type="text" name="ccpaswd" id="ccpaswd" placeholder="digite su ccpaswd" ><br>
+        <br><input  type="text" name="ccpaswdc" id="ccpaswdc" placeholder="confirme su contraseña" ><br>
+        <br><input  type="text" name="email" id="email" placeholder="digite su email" ><br>
+        <br><input  type="text" name="telefono" id="telefono" placeholder="digite su telefono" ><br>
+        <h3><i>construye tu carro favorito, oprimiendo el circulo</i></h3>
+        <input type="radio" name="gustos" id="gustos" ><br>
+        
+    </form>
+
+    <div id="terminos1" style="visibility:visible" >
+        <p><a href="#">Deacuerdo con Terminos y Condiciones</a></p>
+        <input class="botons" type="submit" value="Registrar">
+        <p><a href="#">¿Ya tengo Cuenta?</a></p>
+    </div>
+
+    <div id="divGustos" style="visibility:hidden">
+        <h3>ayuda a construir el auto de tus sueños</h3>
+        <input type="text" name="color" id="color" placeholder="color favorito" ><br>
+        <br>
+        <input type="text" name="marca_carro" id="marca_carro" placeholder="marca favorito"><br>
+        <br>
+        <input type="text" name="estilo_carro" id="estilo_carro" placeholder="estilo favorito"><br>
+        <br>
+        <input type="text" name="modelo" id="modelo" placeholder="modelo favorito"><br>
+        <br>
+        <input type="range" name="valor_pagar" id="valor_pagar">
+        <br>
+    </div>
+
+   
+    <script>
+ 
+   
+    
+
+    //casilla 1
+    var formulario1 = document.getElementById("idUsr");
+    function muestraMensaje1() {
+        var valor = document.getElementById("idUsr").value.length;
+        if (valor>=11) {      
+            alert('el id de usuario puede tener maximo 11 digitos');  
+        } 
+    }
+    formulario1.onchange = muestraMensaje1;
+   
+    function vacio1 (){
+        var valor = document.getElementById("idUsr").value.length;
+        if (valor==0) {      
+            alert('el campo esta vacio debe llenarlo');  
+        } 
+    }
+    formulario1.onblur = vacio1;
+    
+
+
+    //casilla 2
+    var formulario2 = document.getElementById("idPais");
+    function muestraMensaje2() {
+        var valor = document.getElementById("idPais").value.length;
+        if (valor>=3) {      
+            alert('el id de pais puede tener maximo 3 digitos');  
+        }  
+    }
+    formulario2.onchange = muestraMensaje2;
+    
+    function vacio2 (){
+        var valor = document.getElementById("idPais").value.length;
+        if (valor==0) {      
+            alert('el campo esta vacio debe llenarlo');  
+        } 
+    }
+    formulario2.onblur = vacio2;
+
+
+    //casilla 4
+    var formulario4 = document.getElementById("apellido");
+    function muestraMensaje4() {
+        var valor = document.getElementById("apellido").value.length;
+        if (valor>=25) {      
+            alert('el apellido puede tener maximo 25 digitos');  
+        }  
+    }
+    formulario4.onchange = muestraMensaje4; 
+
+    function vacio4 (){
+        var valor = document.getElementById("apellid0").value.length;
+        if (valor==0) {      
+            alert('el campo esta vacio debe llenarlo');  
+        } 
+    }
+    formulario4.onblur = vacio4;
+
+
+
+    //casilla 5
+    var formulario5 = document.getElementById("direccion");
+    function muestraMensaje5() {
+        var valor = document.getElementById("direccion").value.length;
+        if (valor>=45) {      
+            alert('la direccion puede tener maximo 45 digitos');  
+        }  
+    }
+    formulario5.onchange = muestraMensaje5;
+
+
+    function vacio5 (){
+        var valor = document.getElementById("direccion").value.length;
+        if (valor==0) {      
+            alert('el campo esta vacio debe llenarlo');  
+        } 
+    }
+    formulario5.onblur = vacio5;
+
+
+
+
+    //casilla 6
+    var formulario6 = document.getElementById("ccusuario");
+    function muestraMensaje6()  {
+        var valor = document.getElementById("ccusuario").value.length;
+        if (valor>=20) {      
+            alert('el ccusuario puede tener maximo 20 digitos');  
+        }
+        if (valor<=10) {
+            alert('el ccusuario puede tener minimo 10 digitos');
+        }
+        //eliminar datos no validos  
+        var valor1 = document.getElementById("ccusuario").value;
+        var valor2 = valor1.replace(/[^a-zA-Z0-9]/g,'');    
+        if (valor1!=valor2) {
+            alert('error por introducir datos erroneos tales como /[ñÑáéíóúÁÉÍÓÚ.()#%/&/::,@{} _-]/ ');
+        }
+    }
+    formulario6.onchange = muestraMensaje6; 
+
+    function vacio6 (){
+        var valor = document.getElementById("ccusuario").value.length;
+        if (valor==0) {      
+            alert('el campo esta vacio debe llenarlo');  
+        } 
+    }
+    formulario6.onblur = vacio6;
+
+
+
+    //casilla 7
+    var formulario7 = document.getElementById("ccpaswd");
+    function muestraMensaje7() {
+        var valor = document.getElementById("ccpaswd").value.length;
+        if (valor>=20) {      
+            alert('el ccpased puede tener maximo 20 digitos');  
+        }
+        if (valor<15) {
+            alert('el ccpaswd puede tener minimo 15 digitos');
+        } 
+        //eliminar datos no validos  
+        var valor11 = document.getElementById("ccpaswd").value;
+        var valor22 = valor11.replace(/[^a-zA-Z0-9#%/&]/g,'');  
+        if (valor11!=valor22) {
+            alert('error por introducir datos erroneos tales como /[ñÑáéíóúÁÉÍÓÚ.()/::,@{} _-]/ ');
+        } 
+
+    }
+    formulario7.onchange = muestraMensaje7;
+
+    //casilla 7
+    var formulario71 = document.getElementById("ccpaswdc");
+    function muestraMensaje71() {
+        var valor = document.getElementById("ccpaswdc").value.length;
+        if (valor>=20) {      
+            alert('su confirmacion contraseña es incorrecta');  
+        }
+        if (valor<15) {
+            alert('su confirmacion contraseña es incorrecta');
+        } 
+        //eliminar datos no validos  
+        var valor111 = document.getElementById("ccpaswdc").value;
+        var valor222 = valor111.replace(/[^a-zA-Z0-9#%/&]/g,'');  
+        if (valor111!=valor222) {
+            alert('su confirmacion contraseña es incorrecta');
+        }
+        var conf = document.getElementById('ccpaswd').value;
+        var dato = document.getElementById('ccpaswdc').value;
+    
+        if (conf != dato) {
+            alert('su confirmacion contraseña es incorrecta');
+        }
+
+    }
+    formulario71.onchange = muestraMensaje71;
+
+
+    function vacio7 (){
+        var valor = document.getElementById("ccpaswd").value.length;
+        if (valor==0) {      
+            alert('el campo esta vacio debe llenarlo');  
+        } 
+    }
+    formulario7.onblur = vacio7;
+
+    //casilla 8
+    var formulario8 = document.getElementById("email");
+    function muestraMensaje8() {
+        var valor = document.getElementById("email").value.length;
+        if (valor>=120) {      
+            alert('el email puede tener maximo 120 digitos');  
+        }  
+    }
+    formulario8.onchange = muestraMensaje8; 
+
+    function vacio8 (){
+        var valor = document.getElementById("email").value.length;
+        if (valor==0) {      
+            alert('el campo esta vacio debe llenarlo');  
+        } 
+    }
+    formulario8.onblur = vacio8;
+
+
+
+    //casilla 9
+    var formulario9 = document.getElementById("telefono");
+    function muestraMensaje9() {
+        var valor = document.getElementById("telefono").value.length;
+        if (valor>=20) {      
+            alert('el telefono puede tener maximo 20 digitos');  
+        }  
+    }
+    formulario9.onchange = muestraMensaje9;  
+
+    function vacio9 (){
+        var valor = document.getElementById("telefono").value.length;
+        if (valor==0) {      
+            alert('el campo esta vacio debe llenarlo');  
+        } 
+    }
+    formulario9.onblur = vacio9;
+    
+    //gustos
+    
+    var gust = document.getElementById('gustos');
+    function gusto() {
+      
+        document.getElementById('divGustos').style.visibility = "visible";
+              
+    }
+    gust.onclick = gusto;
+    
+    </script>
+</body>
+</html>
